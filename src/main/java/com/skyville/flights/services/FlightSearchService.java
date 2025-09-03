@@ -44,8 +44,7 @@ public class FlightSearchService {
 
         // normalize currency to requested
         for (Flight o : all) {
-            double normalized = currencyConverter.convert(o.getPrice(), o.getCurrency(), request.getCurrency());
-            o.setPrice(Math.round(normalized * 100.0) / 100.0); // round to cents
+            o.setPrice(Math.round(o.getPrice() * 100.0) / 100.0); // round to cents
             o.setCurrency(request.getCurrency());
         }
 
